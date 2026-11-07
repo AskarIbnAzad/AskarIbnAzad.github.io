@@ -3,30 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Askar Ibn Azad | Software Engineer (.NET & Angular)</title>
+  <title>Askar Ibn Azad | Software Engineer (.NET &amp; Angular)</title>
   <meta name="description" content="Askar Ibn Azad, software engineer with 5+ years building enterprise and e-commerce web applications with ASP.NET Core, Angular and MSSQL." />
   <style>
     :root {
-      --bg: #f7f8fb;
+      --bg: #f6f7fb;
       --surface: #ffffff;
-      --text: #1b1f2a;
-      --muted: #5b6375;
-      --accent: #3b5bdb;
-      --accent-2: #12b886;
-      --border: #e3e6ee;
-      --shadow: 0 10px 30px rgba(20, 30, 60, 0.08);
-      --radius: 16px;
+      --text: #161b29;
+      --muted: #5b6477;
+      --accent: #3654e0;
+      --accent-2: #0fa37f;
+      --accent-soft: rgba(54, 84, 224, 0.10);
+      --border: #e2e6f0;
+      --shadow: 0 12px 32px rgba(22, 30, 60, 0.08);
+      --radius: 18px;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0f1218;
-        --surface: #171b24;
-        --text: #e9ecf3;
-        --muted: #9aa3b5;
-        --accent: #7c97ff;
+        --bg: #0d1017;
+        --surface: #151a24;
+        --text: #e8ecf5;
+        --muted: #9ba4b8;
+        --accent: #8097ff;
         --accent-2: #3ddc9f;
-        --border: #262c3a;
-        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --accent-soft: rgba(128, 151, 255, 0.14);
+        --border: #252c3b;
+        --shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,182 +37,309 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
-    section { padding: 72px 0; }
-    h2 {
-      font-size: 1.8rem;
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
     }
-    .lead { color: var(--muted); margin-bottom: 32px; max-width: 680px; }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); letter-spacing: -0.02em; margin-bottom: 10px; }
+    .lead { color: var(--muted); max-width: 680px; margin-bottom: 36px; font-size: 1.05rem; }
 
     /* Navigation */
     nav {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      z-index: 20;
+      backdrop-filter: saturate(160%) blur(12px);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
       border-bottom: 1px solid var(--border);
     }
-    nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 60px;
-    }
-    .brand { font-weight: 700; color: var(--text); }
-    nav ul { list-style: none; display: flex; gap: 20px; }
-    nav a { color: var(--muted); font-size: 0.95rem; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .brand { font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+    .brand span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 22px; }
+    nav a { color: var(--muted); font-size: 0.93rem; font-weight: 500; }
     nav a:hover { color: var(--text); text-decoration: none; }
 
     /* Hero */
-    .hero { padding: 96px 0 80px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 88px 0 96px;
+      background:
+        radial-gradient(900px 500px at 85% -10%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
+        radial-gradient(700px 420px at -10% 110%, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 60%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
     .badge {
-      display: inline-block;
-      padding: 6px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
       border-radius: 999px;
-      background: color-mix(in srgb, var(--accent-2) 15%, transparent);
-      color: var(--accent-2);
+      background: var(--surface);
+      border: 1px solid var(--border);
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 20px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
     }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 22%, transparent); }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      margin-bottom: 16px;
     }
     .hero .role {
-      font-size: 1.25rem;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 20px;
     }
-    .hero p.summary { color: var(--muted); max-width: 640px; font-size: 1.05rem; }
-    .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero .summary { color: var(--muted); max-width: 580px; font-size: 1.08rem; }
+    .actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
     .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 12px;
       font-weight: 600;
+      font-size: 0.97rem;
       border: 1px solid var(--border);
       color: var(--text);
       background: var(--surface);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
+    .btn:hover { text-decoration: none; transform: translateY(-2px); box-shadow: var(--shadow); }
     .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .btn:hover { text-decoration: none; transform: translateY(-1px); }
 
-    /* Stats */
+    .photo-wrap { position: relative; justify-self: center; width: min(360px, 100%); }
+    .photo-ring {
+      position: absolute;
+      inset: -14px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      opacity: 0.9;
+      transform: rotate(-3deg);
+    }
+    .photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 26px;
+      display: block;
+      background: var(--surface);
+    }
+    .chip {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: var(--shadow);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .chip small { display: block; color: var(--muted); font-weight: 500; font-size: 0.78rem; }
+    .chip.one { left: -28px; bottom: 36px; }
+    .chip.two { right: -22px; top: 28px; }
+    .chip .ico {
+      width: 34px; height: 34px; border-radius: 10px;
+      display: grid; place-items: center;
+      background: var(--accent-soft); color: var(--accent); font-weight: 800;
+    }
+
     .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      margin-top: 48px;
+      margin-top: 72px;
     }
     .stat {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px;
+      padding: 22px 24px;
       box-shadow: var(--shadow);
     }
-    .stat strong { display: block; font-size: 1.6rem; color: var(--text); }
+    .stat strong { display: block; font-size: 1.9rem; letter-spacing: -0.02em; color: var(--text); line-height: 1.2; }
     .stat span { color: var(--muted); font-size: 0.9rem; }
 
     /* Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 28px;
       box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+    .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+    .icon {
+      width: 46px; height: 46px; border-radius: 14px;
+      display: grid; place-items: center;
+      background: var(--accent-soft); color: var(--accent);
+      font-weight: 800; font-size: 1.1rem; margin-bottom: 18px;
+    }
+    .card h3 { font-size: 1.12rem; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .card p { color: var(--muted); font-size: 0.97rem; }
     .card ul { list-style: none; }
-    .card li { color: var(--muted); padding: 4px 0; font-size: 0.95rem; }
-    .card li::before { content: "\2192"; color: var(--accent); margin-right: 8px; }
+    .card li { color: var(--muted); padding: 5px 0; font-size: 0.95rem; }
+    .card li::before { content: "\2192"; color: var(--accent); margin-right: 10px; font-weight: 700; }
 
-    /* Tags */
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 1.04rem; }
+    .about-text p strong { color: var(--text); }
+    .facts { display: grid; gap: 14px; }
+    .fact {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow);
+    }
+    .fact .icon { margin: 0; flex-shrink: 0; }
+    .fact h4 { font-size: 0.98rem; margin-bottom: 2px; }
+    .fact p { color: var(--muted); font-size: 0.92rem; }
+
+    /* Skills */
+    .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .group { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); }
+    .group h3 { font-size: 1.05rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag {
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: color-mix(in srgb, var(--accent) 12%, transparent);
-      color: var(--accent);
-      font-size: 0.88rem;
-      font-weight: 600;
+      padding: 7px 13px; border-radius: 10px;
+      background: var(--accent-soft); color: var(--accent);
+      font-size: 0.88rem; font-weight: 600;
     }
-    .tag.learning {
-      background: color-mix(in srgb, var(--accent-2) 14%, transparent);
-      color: var(--accent-2);
-    }
+    .tag.learning { background: color-mix(in srgb, var(--accent-2) 14%, transparent); color: var(--accent-2); border: 1px dashed color-mix(in srgb, var(--accent-2) 55%, transparent); }
+    .note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); }
 
     /* Timeline */
-    .timeline { position: relative; padding-left: 28px; }
+    .timeline { position: relative; padding-left: 34px; max-width: 880px; }
     .timeline::before {
-      content: "";
-      position: absolute;
-      left: 6px;
-      top: 6px;
-      bottom: 6px;
-      width: 2px;
-      background: var(--border);
+      content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+      opacity: 0.45; border-radius: 2px;
     }
-    .job { position: relative; margin-bottom: 36px; }
+    .job { position: relative; margin-bottom: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow); }
     .job::before {
-      content: "";
-      position: absolute;
-      left: -27px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px var(--bg);
+      content: ""; position: absolute; left: -34px; top: 30px; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent); border: 4px solid var(--bg); box-shadow: 0 0 0 2px var(--accent);
     }
-    .job header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-    .job h3 { font-size: 1.15rem; }
-    .job .company { color: var(--accent); font-weight: 600; }
-    .job .meta { color: var(--muted); font-size: 0.9rem; }
-    .job ul { padding-left: 18px; color: var(--muted); }
-    .job li { margin-bottom: 6px; }
+    .job.current::before { background: var(--accent-2); box-shadow: 0 0 0 2px var(--accent-2); }
+    .job header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+    .job h3 { font-size: 1.18rem; letter-spacing: -0.01em; }
+    .job .company { color: var(--accent); font-weight: 700; font-size: 0.98rem; }
+    .job .meta { color: var(--muted); font-size: 0.88rem; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; white-space: nowrap; }
+    .job ul { list-style: none; }
+    .job li { color: var(--muted); padding: 4px 0 4px 18px; position: relative; font-size: 0.97rem; }
+    .job li::before { content: ""; position: absolute; left: 0; top: 13px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.6; }
+
+    /* Education */
+    .edu { display: flex; gap: 18px; align-items: flex-start; }
+    .edu .icon { margin: 0; flex-shrink: 0; }
+    .edu h3 { font-size: 1.08rem; margin-bottom: 4px; }
+    .edu .school { color: var(--text); font-weight: 600; font-size: 0.95rem; }
+    .edu .detail { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
+    .score { display: inline-block; margin-top: 12px; padding: 5px 12px; border-radius: 8px; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 0.85rem; }
+
+    /* Problem solving band */
+    .band {
+      border-radius: 24px;
+      padding: 40px;
+      background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--accent-2)));
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .band h2 { color: #fff; margin-bottom: 8px; }
+    .band p { color: rgba(255,255,255,0.88); }
+    .band .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .band .num { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22); border-radius: 16px; padding: 18px; text-align: center; }
+    .band .num strong { display: block; font-size: 1.6rem; }
+    .band .num span { font-size: 0.82rem; color: rgba(255,255,255,0.85); }
 
     /* Contact */
     .contact-box {
+      position: relative;
+      overflow: hidden;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px;
+      border-radius: 24px;
+      padding: 56px 40px;
       box-shadow: var(--shadow);
       text-align: center;
     }
-    .contact-box p { color: var(--muted); margin-bottom: 24px; }
+    .contact-box::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(500px 240px at 50% -20%, var(--accent-soft), transparent 70%);
+    }
+    .contact-box > * { position: relative; }
+    .contact-box p { color: var(--muted); margin: 0 auto 28px; max-width: 520px; font-size: 1.04rem; }
     .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-      text-align: center;
+    footer { border-top: 1px solid var(--border); padding: 30px 0; color: var(--muted); font-size: 0.9rem; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+    /* Entry animation */
+    .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.7s ease forwards; }
+    .reveal.d1 { animation-delay: 0.1s; }
+    .reveal.d2 { animation-delay: 0.2s; }
+    .reveal.d3 { animation-delay: 0.3s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { animation: none; opacity: 1; transform: none; }
+      .card, .btn { transition: none; }
     }
 
+    /* Responsive */
+    @media (max-width: 920px) {
+      .hero-grid, .about-grid, .band { grid-template-columns: 1fr; }
+      .hero-grid { gap: 48px; }
+      .photo-wrap { order: -1; width: min(300px, 80%); }
+      .chip.one { left: -10px; } .chip.two { right: -10px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .band .nums { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 680px) {
-      section { padding: 56px 0; }
-      nav ul { gap: 12px; }
-      nav a { font-size: 0.85rem; }
-      .contact-box { padding: 28px; }
+      section { padding: 60px 0; }
+      nav ul { display: none; }
+      .hero { padding: 56px 0 64px; }
+      .timeline { padding-left: 24px; }
+      .job::before { left: -24px; }
+      .timeline::before { left: 5px; }
+      .band { padding: 28px; }
+      .contact-box { padding: 40px 24px; }
+      .chip { display: none; }
     }
   </style>
 </head>
@@ -218,11 +347,12 @@
 
   <nav>
     <div class="container">
-      <a class="brand" href="#top">Askar Ibn Azad</a>
+      <a class="brand" href="#top">Askar<span>.</span></a>
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -230,63 +360,99 @@
 
   <header id="top" class="hero">
     <div class="container">
-      <span class="badge">Open to .NET and cloud-focused roles</span>
-      <h1>Askar Ibn Azad</h1>
-      <p class="role">Software Engineer | .NET &amp; Angular</p>
-      <p class="summary">
-        I build enterprise and e-commerce web applications with ASP.NET Core, Angular and MSSQL,
-        and I am now learning AWS to work on cloud-hosted systems.
-      </p>
-      <div class="actions">
-        <a class="btn primary" href="#experience">View experience</a>
-        <a class="btn" href="#contact">Get in touch</a>
+      <div class="hero-grid">
+        <div>
+          <span class="badge reveal"><span class="dot"></span> Open to .NET and cloud-focused roles</span>
+          <h1 class="reveal d1">Askar Ibn Azad</h1>
+          <p class="role reveal d1">Software Engineer | .NET &amp; Angular</p>
+          <p class="summary reveal d2">
+            I build enterprise and e-commerce web applications with ASP.NET Core, Angular and MSSQL,
+            and I am now learning AWS to work on cloud-hosted systems.
+          </p>
+          <div class="actions reveal d3">
+            <a class="btn primary" href="#experience">View experience &rarr;</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="photo-wrap reveal d2">
+          <div class="photo-ring"></div>
+          <img class="photo" src="profile.jpg" alt="Portrait of Askar Ibn Azad" />
+          <div class="chip one">
+            <div class="ico">5+</div>
+            <div>Years building<small>web applications</small></div>
+          </div>
+          <div class="chip two">
+            <div class="ico">C#</div>
+            <div>ASP.NET Core<small>Web API &amp; MVC</small></div>
+          </div>
+        </div>
       </div>
 
       <div class="stats">
-        <div class="stat"><strong>5+ years</strong><span>Professional software development</span></div>
-        <div class="stat"><strong>600+</strong><span>Algorithm problems solved</span></div>
-        <div class="stat"><strong>3</strong><span>Countries of client work: BD, UAE, KSA</span></div>
-        <div class="stat"><strong>100+</strong><span>Crystal Reports built and redesigned</span></div>
+        <div class="stat reveal d1"><strong>5+ years</strong><span>Professional software development</span></div>
+        <div class="stat reveal d2"><strong>600+</strong><span>Algorithm problems solved</span></div>
+        <div class="stat reveal d2"><strong>3 countries</strong><span>Client work: Bangladesh, UAE, Saudi Arabia</span></div>
+        <div class="stat reveal d3"><strong>100+</strong><span>Crystal Reports built or redesigned</span></div>
       </div>
     </div>
   </header>
 
   <section id="about">
     <div class="container">
-      <h2>About</h2>
-      <p class="lead">
-        Software engineer based in Dhaka. I work across the full stack, with a focus on clean Web APIs,
-        stored procedures and maintainable front-ends.
-      </p>
-      <div class="grid">
-        <div class="card">
-          <h3>What I do</h3>
-          <ul>
-            <li>Build full-stack enterprise modules</li>
-            <li>Design and maintain Web APIs</li>
-            <li>Optimise SQL Server stored procedures</li>
-            <li>Review code and support QA in Agile teams</li>
-          </ul>
+      <span class="eyebrow">About</span>
+      <h2>Engineering that holds up in production</h2>
+      <div class="about-grid" style="margin-top: 32px;">
+        <div class="about-text">
+          <p>
+            I am a software engineer based in <strong>Dhaka, Bangladesh</strong>. Over five years I have worked
+            on <strong>enterprise resource systems, e-commerce platforms and admin tools</strong> for clients
+            in Bangladesh, the UAE and Saudi Arabia.
+          </p>
+          <p>
+            My focus is on clean Web APIs, well-designed SQL Server stored procedures and front-ends that are
+            easy to maintain. I work in Agile teams, write SRS-based features, and take part in peer code reviews.
+          </p>
+          <p>
+            Right now I am extending that work into <strong>cloud infrastructure on AWS</strong>, starting with
+            EC2, Linux, Nginx hosting and backup management.
+          </p>
         </div>
-        <div class="card">
-          <h3>Currently learning</h3>
-          <ul>
-            <li>AWS EC2 and Linux server setup</li>
-            <li>Nginx application hosting</li>
-            <li>EBS snapshots and backup management</li>
-          </ul>
+        <div class="facts">
+          <div class="fact">
+            <div class="icon">01</div>
+            <div>
+              <h4>Full-stack delivery</h4>
+              <p>From database design and Web APIs to Angular 18 interfaces.</p>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="icon">02</div>
+            <div>
+              <h4>Client-facing projects</h4>
+              <p>E-commerce for UAE clients and event systems delivered for NEOM, Saudi Arabia.</p>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="icon">03</div>
+            <div>
+              <h4>Process and quality</h4>
+              <p>Daily scrums, SRS/SDD documentation, peer code reviews and QA support.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="skills">
+  <section id="skills" style="padding-top: 20px;">
     <div class="container">
-      <h2>Skills</h2>
-      <p class="lead">Tools I use day to day, and the cloud skills I am building now.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Backend</h3>
+      <span class="eyebrow">Skills</span>
+      <h2>Tools I use every day</h2>
+      <p class="lead">Core stack for production work, plus the cloud skills I am building now.</p>
+      <div class="skill-groups">
+        <div class="group">
+          <h3><span class="icon" style="margin:0;width:36px;height:36px;font-size:.9rem;">{}</span> Backend</h3>
           <div class="tags">
             <span class="tag">ASP.NET Core</span>
             <span class="tag">Web API</span>
@@ -296,24 +462,25 @@
             <span class="tag">JWT</span>
           </div>
         </div>
-        <div class="card">
-          <h3>Frontend</h3>
+        <div class="group">
+          <h3><span class="icon" style="margin:0;width:36px;height:36px;font-size:.9rem;">&lt;/&gt;</span> Frontend</h3>
           <div class="tags">
             <span class="tag">Angular 18</span>
             <span class="tag">React</span>
             <span class="tag">JavaScript</span>
           </div>
         </div>
-        <div class="card">
-          <h3>Database</h3>
+        <div class="group">
+          <h3><span class="icon" style="margin:0;width:36px;height:36px;font-size:.9rem;">DB</span> Database</h3>
           <div class="tags">
             <span class="tag">MSSQL</span>
             <span class="tag">Stored procedures</span>
+            <span class="tag">Advanced SQL</span>
             <span class="tag">Oracle</span>
           </div>
         </div>
-        <div class="card">
-          <h3>Tools</h3>
+        <div class="group">
+          <h3><span class="icon" style="margin:0;width:36px;height:36px;font-size:.9rem;">⚙</span> Tools and process</h3>
           <div class="tags">
             <span class="tag">Git</span>
             <span class="tag">Agile / Scrum</span>
@@ -321,22 +488,16 @@
             <span class="tag">ZKTeco SDK</span>
           </div>
         </div>
-        <div class="card">
-          <h3>Cloud (learning)</h3>
+        <div class="group">
+          <h3><span class="icon" style="margin:0;width:36px;height:36px;font-size:.9rem;">☁</span> Cloud (learning)</h3>
           <div class="tags">
             <span class="tag learning">AWS EC2</span>
             <span class="tag learning">Linux</span>
             <span class="tag learning">Nginx</span>
-            <span class="tag learning">EBS backups</span>
+            <span class="tag learning">EBS snapshots</span>
+            <span class="tag learning">Backup management</span>
           </div>
-        </div>
-        <div class="card">
-          <h3>Problem solving</h3>
-          <ul>
-            <li>600+ problems on HackerRank, LeetCode and Codeforces</li>
-            <li>HackerRank Problem Solving (Intermediate)</li>
-            <li>HackerRank SQL (Advanced)</li>
-          </ul>
+          <p class="note">Actively studying. Hands-on project in progress.</p>
         </div>
       </div>
     </div>
@@ -344,17 +505,18 @@
 
   <section id="experience">
     <div class="container">
-      <h2>Experience</h2>
-      <p class="lead">Five years of product work for clients in Bangladesh, the UAE and Saudi Arabia.</p>
+      <span class="eyebrow">Experience</span>
+      <h2>Where I have worked</h2>
+      <p class="lead">Five years of product work across three client markets.</p>
       <div class="timeline">
 
-        <div class="job">
+        <div class="job current">
           <header>
             <div>
               <h3>Software Engineer</h3>
               <div class="company">Next IT Limited</div>
             </div>
-            <div class="meta">Nov 2025 – Present · Dhaka, Bangladesh</div>
+            <div class="meta">Nov 2025 – Present · Dhaka</div>
           </header>
           <ul>
             <li>Develop and maintain full-stack enterprise modules: Account, Inventory and Restaurant Reservation.</li>
@@ -385,7 +547,7 @@
               <h3>Software Engineer</h3>
               <div class="company">Pixamatics Technology Ltd.</div>
             </div>
-            <div class="meta">Jun 2022 – Dec 2023 · Dhaka, Bangladesh</div>
+            <div class="meta">Jun 2022 – Dec 2023 · Dhaka</div>
           </header>
           <ul>
             <li>HRM system: authentication and authorisation with ASP.NET Identity and JWT.</li>
@@ -400,7 +562,7 @@
               <h3>Junior Software Engineer</h3>
               <div class="company">PC Link IT</div>
             </div>
-            <div class="meta">Nov 2020 – May 2022 · Dhaka, Bangladesh</div>
+            <div class="meta">Nov 2020 – May 2022 · Dhaka</div>
           </header>
           <ul>
             <li>Microfinance system for 70+ clients across 700+ branches: development and maintenance.</li>
@@ -413,12 +575,56 @@
     </div>
   </section>
 
-  <section id="education">
+  <section id="education" style="padding-top: 20px;">
     <div class="container">
-      <h2>Education</h2>
-      <div class="card" style="margin-top: 24px; max-width: 640px;">
-        <h3>BSc in Software Engineering</h3>
-        <p class="meta" style="color: var(--muted);">American International University – Bangladesh · 2017 – 2020 · CGPA 3.54 / 4.00</p>
+      <span class="eyebrow">Education</span>
+      <h2>Academic background</h2>
+      <p class="lead">From school to a software engineering degree.</p>
+      <div class="grid">
+        <div class="card edu">
+          <div class="icon">BSc</div>
+          <div>
+            <h3>BSc in Software Engineering</h3>
+            <div class="school">American International University – Bangladesh</div>
+            <div class="detail">2017 – 2020</div>
+            <span class="score">CGPA 3.54 / 4.00</span>
+          </div>
+        </div>
+        <div class="card edu">
+          <div class="icon">HSC</div>
+          <div>
+            <h3>Higher Secondary Certificate</h3>
+            <div class="school">Notre Dame College, Mymensingh</div>
+            <div class="detail">2016</div>
+            <span class="score">GPA 4.83 / 5.00</span>
+          </div>
+        </div>
+        <div class="card edu">
+          <div class="icon">SSC</div>
+          <div>
+            <h3>Secondary School Certificate</h3>
+            <div class="school">Anjuman Adarsha Govt. High School, Netrokona</div>
+            <div class="detail">2014</div>
+            <span class="score">GPA 5.00 / 5.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem-solving" style="padding-top: 20px;">
+    <div class="container">
+      <div class="band">
+        <div>
+          <span class="eyebrow" style="color:rgba(255,255,255,0.8);">Problem solving</span>
+          <h2>600+ algorithm challenges solved</h2>
+          <p>Practice on HackerRank, LeetCode and Codeforces, with HackerRank certifications in Problem Solving (Intermediate) and SQL (Advanced).</p>
+        </div>
+        <div class="nums">
+          <div class="num"><strong>600+</strong><span>Problems solved</span></div>
+          <div class="num"><strong>3</strong><span>Platforms</span></div>
+          <div class="num"><strong>2</strong><span>HackerRank certs</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -426,6 +632,7 @@
   <section id="contact">
     <div class="container">
       <div class="contact-box">
+        <span class="eyebrow">Contact</span>
         <h2>Let's work together</h2>
         <p>Open to .NET, full-stack and cloud-focused roles. Email is the fastest way to reach me.</p>
         <div class="links">
@@ -438,7 +645,10 @@
   </section>
 
   <footer>
-    <div class="container">© 2026 Askar Ibn Azad · Dhaka, Bangladesh</div>
+    <div class="container">
+      <span>© 2026 Askar Ibn Azad</span>
+      <span>Dhaka, Bangladesh · Built with HTML and CSS</span>
+    </div>
   </footer>
 
 </body>
