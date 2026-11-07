@@ -4,729 +4,582 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Askar Ibn Azad | Software Engineer (.NET &amp; Angular)</title>
-  <meta name="description" content="Askar Ibn Azad, software engineer with 5+ years building enterprise and e-commerce web applications with ASP.NET Core, Angular and MSSQL." />
+  <meta name="description" content="Askar Ibn Azad, software engineer with 5+ years building enterprise and e-commerce web applications with ASP.NET Core, Angular and SQL Server." />
   <meta property="og:title" content="Askar Ibn Azad | Software Engineer" />
   <meta property="og:description" content=".NET and Angular engineer with 5+ years building enterprise and e-commerce systems." />
   <meta property="og:image" content="profile.jpg" />
-  <meta name="theme-color" content="#07090f" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #07090f;
-      --bg-2: #0c0f18;
-      --card: rgba(255, 255, 255, 0.035);
-      --card-hover: rgba(255, 255, 255, 0.06);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-strong: rgba(255, 255, 255, 0.16);
-      --text: #eef1f7;
-      --muted: #a1a9b8;
-      --subtle: #6f7889;
-      --a1: #7c8cff;
-      --a2: #38e1c4;
-      --grad: linear-gradient(120deg, var(--a1), var(--a2));
-      --radius: 20px;
-      --max: 1160px;
-      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --white: #ffffff;
+      --alt: #f6f8fb;
+      --text: #111827;
+      --body: #4b5563;
+      --light: #6b7280;
+      --navy: #1e3a8a;
+      --navy-dark: #172e6e;
+      --navy-soft: #eef2fb;
+      --line: #e5e7eb;
+      --max: 1140px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
     body {
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       color: var(--text);
+      background: var(--white);
+      font-size: 16px;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; }
+    a { color: var(--navy); text-decoration: none; }
     img { display: block; max-width: 100%; }
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
-    .mono { font-family: var(--mono); }
-    .grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+    section { padding: 96px 0; }
+    section.alt { background: var(--alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
-    /* Background */
-    .bg-fx { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-    .bg-fx::before {
-      content: ""; position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-    }
-    .glow { position: absolute; border-radius: 50%; filter: blur(110px); opacity: 0.35; }
-    .glow.g1 { width: 560px; height: 560px; background: var(--a1); top: -220px; right: -120px; }
-    .glow.g2 { width: 460px; height: 460px; background: var(--a2); top: 240px; left: -260px; opacity: 0.18; }
-
-    /* Nav */
-    nav {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(7, 9, 15, 0.72);
-      backdrop-filter: saturate(180%) blur(16px);
-      -webkit-backdrop-filter: saturate(180%) blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav .container { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .logo { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -0.01em; }
-    .logo-mark {
-      width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
-      background: var(--grad); color: #07090f; font-weight: 800; font-size: 0.92rem;
-    }
-    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-    .nav-links a {
-      padding: 8px 14px; border-radius: 9px; font-size: 0.92rem; font-weight: 500; color: var(--muted);
-      transition: color .2s, background .2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--card-hover); }
+    .kicker { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; display: block; }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.3rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
+    .sec-intro { color: var(--body); font-size: 1.05rem; max-width: 620px; margin-top: 12px; }
+    .sec-head { margin-bottom: 52px; }
 
     /* Buttons */
     .btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 13px 22px; border-radius: 12px; font-weight: 600; font-size: 0.95rem;
-      border: 1px solid var(--border-strong); background: var(--card); color: var(--text);
-      transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 24px; border-radius: 8px; font-weight: 600; font-size: 0.96rem;
+      border: 1px solid var(--line); background: var(--white); color: var(--text);
+      transition: background .15s, border-color .15s, color .15s;
     }
-    .btn:hover { transform: translateY(-2px); background: var(--card-hover); border-color: rgba(255,255,255,0.28); }
-    .btn.primary { background: var(--text); color: #07090f; border-color: var(--text); }
-    .btn.primary:hover { box-shadow: 0 10px 40px -10px rgba(124, 140, 255, 0.7); background: #fff; }
-    .btn.sm { padding: 9px 16px; font-size: 0.88rem; border-radius: 10px; }
+    .btn:hover { border-color: #c7ccd6; background: var(--alt); }
+    .btn.primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .btn.primary:hover { background: var(--navy-dark); }
     .btn svg { width: 17px; height: 17px; }
+    .btn.sm { padding: 9px 16px; font-size: 0.9rem; }
+
+    /* Nav */
+    nav { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    nav .container { height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 700; font-size: 1.08rem; color: var(--text); letter-spacing: -0.01em; }
+    .brand span { color: var(--navy); }
+    .menu { display: flex; gap: 32px; list-style: none; }
+    .menu a { color: var(--body); font-size: 0.94rem; font-weight: 500; }
+    .menu a:hover { color: var(--navy); }
 
     /* Hero */
-    .hero { padding: 100px 0 64px; }
-    .hero-grid { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 72px; align-items: center; }
-    .eyebrow-pill {
-      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px;
-      padding: 6px 14px 6px 8px; border-radius: 999px; border: 1px solid var(--border-strong);
-      background: rgba(255,255,255,0.04); font-size: 0.85rem; color: var(--muted);
-    }
-    .eyebrow-pill b {
-      font-family: var(--mono); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.04em;
-      padding: 3px 8px; border-radius: 999px; background: rgba(56, 225, 196, 0.14); color: var(--a2);
-      display: inline-flex; align-items: center; gap: 6px;
-    }
-    .live { width: 7px; height: 7px; border-radius: 50%; background: var(--a2); box-shadow: 0 0 10px var(--a2); }
-    .hero h1 {
-      font-size: clamp(2.4rem, 5.2vw, 4.1rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.045em;
-      margin-bottom: 26px;
-    }
-    .hero .intro { font-size: 1.14rem; color: var(--muted); max-width: 600px; }
-    .hero .intro strong { color: var(--text); font-weight: 600; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
-    .socials { display: flex; gap: 10px; margin-top: 34px; align-items: center; }
-    .socials span { font-family: var(--mono); font-size: 0.78rem; color: var(--subtle); margin-right: 6px; }
-    .icon-btn {
-      width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center;
-      border: 1px solid var(--border); background: var(--card); color: var(--muted);
-      transition: color .2s, border-color .2s, transform .2s;
-    }
-    .icon-btn:hover { color: var(--text); border-color: var(--border-strong); transform: translateY(-2px); }
-    .icon-btn svg { width: 19px; height: 19px; }
+    .hero { padding: 88px 0 0; }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 72px; align-items: center; }
+    .available { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 500; color: var(--body); background: var(--alt); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; margin-bottom: 26px; }
+    .available i { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.035em; }
+    .hero h1 span { color: var(--navy); }
+    .hero .sub { font-size: 1.15rem; color: var(--body); margin-top: 22px; max-width: 580px; }
+    .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .hero .links { display: flex; gap: 22px; margin-top: 30px; font-size: 0.93rem; }
+    .hero .links a { color: var(--light); display: inline-flex; align-items: center; gap: 7px; font-weight: 500; }
+    .hero .links a:hover { color: var(--navy); }
+    .hero .links svg { width: 17px; height: 17px; }
+    .photo { position: relative; justify-self: end; width: min(360px, 100%); }
+    .photo::before { content: ""; position: absolute; inset: 20px -20px -20px 20px; border-radius: 16px; background: var(--navy-soft); border: 1px solid #dbe3f5; }
+    .photo img { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 15%; border-radius: 16px; box-shadow: 0 20px 40px -20px rgba(17, 24, 39, 0.3); }
 
-    .portrait { position: relative; justify-self: end; width: min(400px, 100%); }
-    .portrait-frame {
-      position: relative; padding: 1px; border-radius: 28px;
-      background: linear-gradient(160deg, rgba(124,140,255,0.8), rgba(255,255,255,0.08) 40%, rgba(56,225,196,0.7));
-      box-shadow: 0 40px 80px -30px rgba(124, 140, 255, 0.45);
-    }
-    .portrait-inner { border-radius: 27px; overflow: hidden; background: var(--bg-2); }
-    .portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 15%; }
-    .float-card {
-      position: absolute; display: flex; align-items: center; gap: 12px;
-      padding: 12px 16px; border-radius: 14px; border: 1px solid var(--border-strong);
-      background: rgba(12, 15, 24, 0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
-    }
-    .float-card .k { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; }
-    .float-card .v { font-size: 0.78rem; color: var(--muted); line-height: 1.35; }
-    .float-card.fc1 { left: -44px; bottom: 56px; }
-    .float-card.fc2 { right: -26px; top: 36px; }
-    .float-card .dotsq { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; background: rgba(124,140,255,0.16); color: var(--a1); font-family: var(--mono); font-weight: 600; font-size: 0.8rem; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 88px; border-top: 1px solid var(--line); }
+    .stat { padding: 32px 0 40px; }
+    .stat + .stat { padding-left: 32px; border-left: 1px solid var(--line); }
+    .stat b { display: block; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--navy); line-height: 1.1; }
+    .stat span { font-size: 0.93rem; color: var(--light); }
 
-    /* Marquee */
-    .marquee { margin-top: 80px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 22px 0; overflow: hidden;
-      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-    .marquee-track { display: flex; gap: 56px; width: max-content; animation: scroll 38s linear infinite; }
-    .marquee-track span { font-family: var(--mono); font-size: 0.95rem; color: var(--subtle); white-space: nowrap; display: inline-flex; align-items: center; gap: 56px; }
-    .marquee-track span::after { content: "◆"; font-size: 0.5rem; color: var(--border-strong); }
-    @keyframes scroll { to { transform: translateX(-50%); } }
-
-    /* Sections */
-    section { padding: 110px 0 0; }
-    .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 48px; flex-wrap: wrap; }
-    .sec-tag { font-family: var(--mono); font-size: 0.8rem; color: var(--a2); margin-bottom: 14px; display: block; }
-    .sec-head h2 { font-size: clamp(2rem, 3.6vw, 2.8rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; max-width: 640px; }
-    .sec-head p { color: var(--muted); max-width: 400px; font-size: 1rem; }
-
-    .card {
-      position: relative; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card);
-      transition: border-color .3s ease, background .3s ease, transform .3s ease;
-    }
-    .card:hover { border-color: var(--border-strong); background: var(--card-hover); }
-
-    /* Bento */
-    .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: minmax(150px, auto); gap: 16px; }
-    .bento .card { padding: 28px; overflow: hidden; }
-    .b-about { grid-column: span 4; grid-row: span 2; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
-    .b-about p { color: var(--muted); font-size: 1.04rem; margin-bottom: 14px; }
-    .b-about p strong { color: var(--text); font-weight: 600; }
-    .b-stat { grid-column: span 2; display: flex; flex-direction: column; justify-content: space-between; }
-    .b-stat .num { font-size: 3rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1; }
-    .b-stat .lbl { color: var(--muted); font-size: 0.92rem; margin-top: 10px; }
-    .b-label { font-family: var(--mono); font-size: 0.74rem; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.1em; }
-    .b-wide { grid-column: span 3; }
-    .b-third { grid-column: span 2; }
-    .flags { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
-    .flag { padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); font-size: 0.88rem; font-weight: 500; }
-    .now-role h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin: 14px 0 4px; }
-    .now-role .co { color: var(--a1); font-weight: 600; }
-    .now-role p { color: var(--muted); font-size: 0.95rem; margin-top: 12px; }
-    .learning-card { background: linear-gradient(160deg, rgba(56,225,196,0.10), rgba(255,255,255,0.02) 60%); border-color: rgba(56,225,196,0.25); }
-    .learn-list { list-style: none; margin-top: 16px; display: grid; gap: 10px; }
-    .learn-list li { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; color: var(--text); }
-    .learn-list li i { font-style: normal; font-family: var(--mono); font-size: 0.72rem; color: var(--a2); border: 1px solid rgba(56,225,196,0.35); border-radius: 6px; padding: 2px 7px; }
-    .stack-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .pill { font-family: var(--mono); font-size: 0.8rem; padding: 6px 11px; border-radius: 8px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--muted); }
+    /* About */
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .about p { color: var(--body); font-size: 1.04rem; margin-bottom: 18px; }
+    .about p strong { color: var(--text); font-weight: 600; }
+    .services { display: grid; gap: 14px; }
+    .service { display: flex; gap: 18px; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; }
+    .service .ico { width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px; display: grid; place-items: center; background: var(--navy-soft); color: var(--navy); }
+    .service .ico svg { width: 22px; height: 22px; }
+    .service h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 3px; }
+    .service p { font-size: 0.93rem; color: var(--body); margin: 0; }
 
     /* Experience */
-    .timeline { position: relative; }
-    .job { display: grid; grid-template-columns: 240px 1fr; gap: 48px; padding: 40px 0; border-top: 1px solid var(--border); }
-    .job:last-child { border-bottom: 1px solid var(--border); }
-    .job-when { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
-    .job-where { font-size: 0.88rem; color: var(--subtle); margin-top: 6px; }
-    .now-badge { display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; font-family: var(--mono); font-size: 0.72rem; color: var(--a2); padding: 4px 10px; border-radius: 999px; background: rgba(56,225,196,0.1); border: 1px solid rgba(56,225,196,0.3); }
-    .job h3 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.025em; }
-    .job .co { color: var(--a1); font-weight: 600; margin: 2px 0 18px; }
-    .job ul { list-style: none; display: grid; gap: 12px; }
-    .job li { position: relative; padding-left: 24px; color: var(--muted); font-size: 0.98rem; }
-    .job li::before { content: "→"; position: absolute; left: 0; color: var(--subtle); font-family: var(--mono); font-size: 0.9rem; }
-    .job li b { color: var(--text); font-weight: 600; }
-    .job .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .xp { display: grid; grid-template-columns: 260px 1fr; gap: 40px; padding: 36px 0; border-top: 1px solid var(--line); }
+    .xp:last-child { border-bottom: 1px solid var(--line); }
+    .xp-meta .when { font-weight: 600; font-size: 0.95rem; }
+    .xp-meta .where { color: var(--light); font-size: 0.92rem; margin-top: 2px; }
+    .xp-meta .now { display: inline-block; margin-top: 12px; font-size: 0.78rem; font-weight: 600; color: #15803d; background: #ecfdf3; border: 1px solid #bbf7d0; border-radius: 999px; padding: 2px 10px; }
+    .xp h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.015em; }
+    .xp .co { color: var(--navy); font-weight: 600; margin: 2px 0 14px; }
+    .xp ul { list-style: none; display: grid; gap: 9px; }
+    .xp li { position: relative; padding-left: 20px; color: var(--body); }
+    .xp li::before { content: ""; position: absolute; left: 0; top: 0.68em; width: 6px; height: 6px; border-radius: 50%; background: var(--navy); }
+    .xp li b { color: var(--text); font-weight: 600; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chip { font-size: 0.8rem; font-weight: 500; color: var(--body); background: var(--alt); border: 1px solid var(--line); padding: 3px 10px; border-radius: 6px; }
 
-    /* Work */
-    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .work { padding: 30px; display: flex; flex-direction: column; min-height: 280px; }
-    .work::before {
-      content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
-      background: var(--grad); opacity: 0; transition: opacity .3s ease;
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
-    }
-    .work:hover { transform: translateY(-4px); }
-    .work:hover::before { opacity: 1; }
-    .work-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; }
-    .work-idx { font-family: var(--mono); font-size: 0.8rem; color: var(--subtle); }
-    .work-cat { font-family: var(--mono); font-size: 0.72rem; color: var(--a2); text-transform: uppercase; letter-spacing: 0.08em; }
-    .work h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
-    .work p { color: var(--muted); font-size: 0.95rem; flex-grow: 1; }
-    .work .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .project { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 28px; transition: border-color .2s, box-shadow .2s; }
+    .project:hover { border-color: #c7d2ee; box-shadow: 0 12px 28px -18px rgba(30, 58, 138, 0.35); }
+    .project .cat { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--light); }
+    .project h3 { font-size: 1.15rem; font-weight: 700; margin: 10px 0 8px; letter-spacing: -0.01em; }
+    .project p { color: var(--body); font-size: 0.95rem; flex-grow: 1; }
+    .project .chips { margin-top: 20px; }
 
     /* Skills */
-    .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .skill { padding: 28px; }
-    .skill-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 20px; background: rgba(124,140,255,0.12); color: var(--a1); }
-    .skill-ico svg { width: 22px; height: 22px; }
-    .skill h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; }
-    .skill ul { list-style: none; display: grid; gap: 8px; }
-    .skill li { color: var(--muted); font-size: 0.93rem; display: flex; align-items: center; gap: 10px; }
-    .skill li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--a1); opacity: 0.7; flex-shrink: 0; }
-    .skill.learn .skill-ico { background: rgba(56,225,196,0.12); color: var(--a2); }
-    .skill.learn li::before { background: var(--a2); }
-    .skill.learn h3 span { font-family: var(--mono); font-size: 0.7rem; font-weight: 500; color: var(--a2); margin-left: 8px; }
+    .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .skill { border: 1px solid var(--line); border-radius: 12px; padding: 26px; background: var(--white); }
+    .skill h3 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .skill ul { list-style: none; display: grid; gap: 9px; }
+    .skill li { color: var(--body); font-size: 0.95rem; display: flex; align-items: center; gap: 10px; }
+    .skill li svg { width: 16px; height: 16px; color: var(--navy); flex-shrink: 0; }
+    .skill.learning { border-style: dashed; border-color: #b9c6e6; }
+    .skill.learning h3 small { font-size: 0.75rem; font-weight: 600; color: var(--navy); background: var(--navy-soft); padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
 
     /* Education */
-    .edu-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 16px; }
-    .edu { padding: 30px; display: flex; flex-direction: column; }
-    .edu .lvl { font-family: var(--mono); font-size: 0.74rem; color: var(--subtle); text-transform: uppercase; letter-spacing: 0.1em; }
-    .edu h3 { font-size: 1.12rem; font-weight: 700; letter-spacing: -0.015em; margin: 14px 0 6px; }
-    .edu .sch { color: var(--muted); font-size: 0.94rem; flex-grow: 1; }
-    .edu .row { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
-    .edu .yr { font-family: var(--mono); font-size: 0.85rem; color: var(--subtle); }
-    .edu .gpa { font-weight: 700; font-size: 1.05rem; }
-    .edu .gpa small { color: var(--subtle); font-weight: 500; font-size: 0.82rem; }
-    .edu.featured { background: linear-gradient(160deg, rgba(124,140,255,0.12), rgba(255,255,255,0.02) 65%); border-color: rgba(124,140,255,0.3); }
-
-    .certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
-    .cert { padding: 22px 26px; display: flex; align-items: center; gap: 16px; }
-    .cert .cico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: rgba(56,225,196,0.12); color: var(--a2); flex-shrink: 0; }
-    .cert .cico svg { width: 20px; height: 20px; }
-    .cert b { display: block; font-size: 0.98rem; }
-    .cert span { color: var(--muted); font-size: 0.86rem; }
+    .edu-wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; }
+    .edu-list { display: grid; gap: 16px; }
+    .edu { display: flex; justify-content: space-between; align-items: center; gap: 20px; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px 26px; }
+    .edu h3 { font-size: 1.04rem; font-weight: 700; }
+    .edu .sch { color: var(--body); font-size: 0.95rem; }
+    .edu .yr { color: var(--light); font-size: 0.88rem; }
+    .edu .grade { text-align: right; flex-shrink: 0; }
+    .edu .grade b { display: block; font-size: 1.3rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; }
+    .edu .grade span { font-size: 0.8rem; color: var(--light); }
+    .cert-box { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 28px; }
+    .cert-box h3 { font-size: 1rem; font-weight: 700; margin-bottom: 18px; }
+    .cert { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--line); }
+    .cert:first-of-type { border-top: none; padding-top: 0; }
+    .cert .ico { width: 36px; height: 36px; flex-shrink: 0; border-radius: 8px; display: grid; place-items: center; background: var(--navy-soft); color: var(--navy); }
+    .cert .ico svg { width: 18px; height: 18px; }
+    .cert b { display: block; font-size: 0.96rem; font-weight: 600; }
+    .cert span { color: var(--light); font-size: 0.88rem; }
 
     /* Contact */
-    .cta {
-      position: relative; overflow: hidden; margin-top: 110px; padding: 80px 56px; border-radius: 28px; text-align: center;
-      border: 1px solid var(--border-strong);
-      background:
-        radial-gradient(600px 300px at 50% 0%, rgba(124,140,255,0.28), transparent 70%),
-        radial-gradient(500px 260px at 50% 120%, rgba(56,225,196,0.18), transparent 70%),
-        var(--bg-2);
-    }
-    .cta h2 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1.08; margin: 16px auto 18px; max-width: 760px; }
-    .cta p { color: var(--muted); font-size: 1.08rem; max-width: 540px; margin: 0 auto 36px; }
-    .cta .hero-actions { justify-content: center; margin-top: 0; }
-    .contact-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; margin-top: 40px; font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
-    .contact-row a:hover { color: var(--text); }
+    .contact { background: var(--navy); color: #fff; padding: 88px 0; }
+    .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; }
+    .contact .kicker { color: #aac0ff; }
+    .contact h2 { color: #fff; font-size: clamp(2rem, 3.4vw, 2.6rem); }
+    .contact p { color: #cdd8f6; font-size: 1.06rem; margin-top: 14px; max-width: 520px; }
+    .contact .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .contact .btn.primary { background: #fff; color: var(--navy); border-color: #fff; }
+    .contact .btn.primary:hover { background: #eef2fb; }
+    .contact .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+    .contact .btn.ghost:hover { background: rgba(255,255,255,0.08); }
+    .contact-list { display: grid; gap: 12px; }
+    .contact-item { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: 12px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); color: #fff; transition: background .15s; }
+    .contact-item:hover { background: rgba(255,255,255,0.12); }
+    .contact-item svg { width: 20px; height: 20px; flex-shrink: 0; color: #aac0ff; }
+    .contact-item small { display: block; font-size: 0.78rem; color: #aac0ff; }
+    .contact-item b { font-weight: 600; font-size: 0.98rem; }
 
-    footer { margin-top: 80px; padding: 32px 0; border-top: 1px solid var(--border); color: var(--subtle); font-size: 0.88rem; }
-    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-
-    /* Reveal (only when JS runs) */
-    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
-    .js .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .marquee-track { animation: none; }
-      .js .reveal { opacity: 1; transform: none; transition: none; }
-      .btn, .card, .icon-btn { transition: none; }
-    }
+    footer { background: var(--navy-dark); color: #9fb2e6; font-size: 0.88rem; padding: 22px 0; }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
     /* Responsive */
-    @media (max-width: 1040px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 64px; }
-      .portrait { justify-self: center; width: min(360px, 86%); order: -1; }
-      .float-card.fc1 { left: -18px; } .float-card.fc2 { right: -14px; }
-      .bento { grid-template-columns: repeat(2, 1fr); }
-      .b-about, .b-wide, .b-third, .b-stat { grid-column: span 2; }
-      .b-stat { grid-column: span 1; }
-      .b-about { grid-row: auto; }
-      .work-grid { grid-template-columns: repeat(2, 1fr); }
-      .skills { grid-template-columns: repeat(2, 1fr); }
-      .edu-grid, .certs { grid-template-columns: 1fr; }
-      .job { grid-template-columns: 1fr; gap: 16px; }
+    @media (max-width: 980px) {
+      .hero-grid, .about, .edu-wrap, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .photo { justify-self: start; width: min(300px, 80%); order: -1; }
+      .projects, .skills { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(3) { padding-left: 0; border-left: none; }
+      .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .xp { grid-template-columns: 1fr; gap: 12px; }
     }
-    @media (max-width: 700px) {
+    @media (max-width: 680px) {
       .container { padding: 0 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 56px 0 40px; }
-      section { padding-top: 84px; }
-      .bento { grid-template-columns: 1fr 1fr; }
-      .b-stat .num { font-size: 2.3rem; }
-      .work-grid, .skills { grid-template-columns: 1fr; }
-      .float-card { display: none; }
-      .cta { padding: 56px 24px; }
-      .sec-head { margin-bottom: 32px; }
+      section { padding: 72px 0; }
+      .menu { display: none; }
+      .hero { padding-top: 48px; }
+      .stats { margin-top: 64px; }
+      .stat + .stat { padding-left: 20px; }
+      .stat:nth-child(3) { padding-left: 0; }
+      .stat b { font-size: 1.8rem; }
+      .projects, .skills { grid-template-columns: 1fr; }
+      .edu { flex-direction: column; align-items: flex-start; }
+      .edu .grade { text-align: left; }
+      .contact { padding: 64px 0; }
     }
   </style>
 </head>
 <body>
-  <script>document.documentElement.classList.add('js');</script>
-  <div class="bg-fx"><div class="glow g1"></div><div class="glow g2"></div></div>
 
   <nav>
     <div class="container">
-      <a class="logo" href="#top"><span class="logo-mark">AA</span><span>Askar Ibn Azad</span></a>
-      <ul class="nav-links">
+      <a class="brand" href="#top">Askar Ibn Azad<span>.</span></a>
+      <ul class="menu">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
-        <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-      <a class="btn sm" href="Askar_Ibn_Azad_CV.pdf" download>
+      <a class="btn primary sm" href="Askar_Ibn_Azad_CV.pdf" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
         Download CV
       </a>
     </div>
   </nav>
 
+  <!-- Hero -->
   <header id="top" class="hero">
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow-pill reveal"><b><span class="live"></span>OPEN</b> To .NET, full-stack &amp; cloud roles</div>
-          <h1 class="reveal">Building reliable <span class="grad-text">.NET systems</span> for enterprise &amp; <span style="white-space:nowrap">e-commerce.</span></h1>
-          <p class="intro reveal">
-            I'm <strong>Askar Ibn Azad</strong>, a software engineer in Dhaka with <strong>5+ years</strong> of experience
-            shipping ASP.NET Core, Angular and SQL Server applications for clients in Bangladesh, the UAE and Saudi Arabia.
+          <span class="available"><i></i> Open to new opportunities</span>
+          <h1>Hi, I'm Askar Ibn Azad.<br /><span>Software Engineer.</span></h1>
+          <p class="sub">
+            I build enterprise and e-commerce web applications with ASP.NET Core, Angular and SQL Server,
+            and I'm currently expanding my skills into AWS cloud.
           </p>
-          <div class="hero-actions reveal">
+          <div class="actions">
             <a class="btn primary" href="#experience">
-              View experience
+              View my experience
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </a>
-            <a class="btn" href="mailto:Askaribn223@gmail.com">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-              Email me
-            </a>
+            <a class="btn" href="#contact">Contact me</a>
           </div>
-          <div class="socials reveal">
-            <span>find me on</span>
-            <a class="icon-btn" href="https://www.linkedin.com/in/mraskaribnazad" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <div class="links">
+            <a href="https://www.linkedin.com/in/mraskaribnazad" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              LinkedIn
             </a>
-            <a class="icon-btn" href="https://github.com/AskarIbnAzad" target="_blank" rel="noopener" aria-label="GitHub">
+            <a href="https://github.com/AskarIbnAzad" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+              GitHub
             </a>
-            <a class="icon-btn" href="mailto:Askaribn223@gmail.com" aria-label="Email">
+            <a href="mailto:Askaribn223@gmail.com">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Email
             </a>
           </div>
         </div>
-
-        <div class="portrait reveal">
-          <div class="portrait-frame"><div class="portrait-inner">
-            <img src="profile.jpg" alt="Portrait of Askar Ibn Azad" />
-          </div></div>
-          <div class="float-card fc2">
-            <div class="dotsq">C#</div>
-            <div><div style="font-weight:700;font-size:.92rem;">ASP.NET Core</div><div class="v">Web API · MVC · EF Core</div></div>
-          </div>
-          <div class="float-card fc1">
-            <div class="k grad-text">5+</div>
-            <div class="v">years shipping<br/>production apps</div>
-          </div>
+        <div class="photo">
+          <img src="profile.jpg" alt="Portrait of Askar Ibn Azad" />
         </div>
       </div>
-    </div>
 
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>ASP.NET Core</span><span>Web API</span><span>Angular 18</span><span>C#</span><span>SQL Server</span><span>EF Core</span><span>React</span><span>JWT</span><span>ASP.NET Identity</span><span>Git</span><span>AWS EC2</span><span>Linux</span><span>Nginx</span>
-        <span>ASP.NET Core</span><span>Web API</span><span>Angular 18</span><span>C#</span><span>SQL Server</span><span>EF Core</span><span>React</span><span>JWT</span><span>ASP.NET Identity</span><span>Git</span><span>AWS EC2</span><span>Linux</span><span>Nginx</span>
+      <div class="stats">
+        <div class="stat"><b>5+</b><span>Years of experience</span></div>
+        <div class="stat"><b>4</b><span>Companies worked with</span></div>
+        <div class="stat"><b>3</b><span>Client countries</span></div>
+        <div class="stat"><b>600+</b><span>Problems solved</span></div>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- About / bento -->
-    <section id="about">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <span class="sec-tag">// 01 — at a glance</span>
-            <h2>Full-stack engineer with a backend focus.</h2>
-          </div>
-          <p>Clean APIs, fast SQL and maintainable front-ends, delivered in Agile teams.</p>
+  <!-- About -->
+  <section id="about" class="alt">
+    <div class="container">
+      <div class="about">
+        <div>
+          <span class="kicker">About me</span>
+          <h2>A backend-focused full-stack engineer</h2>
+          <p style="margin-top:22px;">
+            I'm a software engineer based in <strong>Dhaka, Bangladesh</strong>, with more than five years of experience
+            building <strong>enterprise systems, e-commerce platforms and admin tools</strong> for clients in Bangladesh,
+            the UAE and Saudi Arabia.
+          </p>
+          <p>
+            My strengths are well-structured Web APIs, efficient SQL Server stored procedures and maintainable
+            Angular front-ends. I work in Agile teams, build features from SRS/SDD documents and take part in
+            peer code reviews.
+          </p>
+          <p>
+            I'm currently learning <strong>AWS</strong>, including EC2, Linux, Nginx hosting and backup management,
+            so I can take applications from code all the way to production servers.
+          </p>
         </div>
-
-        <div class="bento">
-          <div class="card b-about reveal">
-            <div>
-              <span class="b-label">About</span>
-              <p style="margin-top:16px;">I build <strong>enterprise resource systems, e-commerce platforms and admin tools</strong> with ASP.NET Core, Angular and SQL Server.</p>
-              <p>My strengths are well-structured Web APIs, optimised stored procedures and dependable delivery: I write features from SRS/SDD specs, review peers' code and work closely with QA.</p>
-              <p style="margin-bottom:0;">I'm now extending into <strong>AWS cloud infrastructure</strong> so I can own applications from code to server.</p>
-            </div>
-            <div class="stack-pills">
-              <span class="pill">C#</span><span class="pill">ASP.NET Core</span><span class="pill">Angular</span><span class="pill">MSSQL</span><span class="pill">EF Core</span><span class="pill">Agile</span>
-            </div>
+        <div class="services">
+          <div class="service">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></div>
+            <div><h3>Backend &amp; APIs</h3><p>RESTful Web APIs with ASP.NET Core, EF Core, Identity and JWT.</p></div>
           </div>
-
-          <div class="card b-stat reveal">
-            <span class="b-label">Experience</span>
-            <div><div class="num grad-text">5+</div><div class="lbl">Years in professional software development</div></div>
+          <div class="service">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+            <div><h3>Frontend</h3><p>Business applications in Angular 18, plus React integration.</p></div>
           </div>
-          <div class="card b-stat reveal">
-            <span class="b-label">Problem solving</span>
-            <div><div class="num">600+</div><div class="lbl">Problems on HackerRank, LeetCode &amp; Codeforces</div></div>
+          <div class="service">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
+            <div><h3>Database</h3><p>SQL Server design, stored procedure optimisation and reporting.</p></div>
           </div>
-
-          <div class="card b-third now-role reveal">
-            <span class="b-label">Currently</span>
-            <h3>Software Engineer</h3>
-            <div class="co">Next IT Limited</div>
-            <p>Account, Inventory and Restaurant Reservation modules.</p>
+          <div class="service">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.3-8.8A6 6 0 1 0 6 16.5"/><path d="M6 19h11.5"/></svg></div>
+            <div><h3>Cloud (learning)</h3><p>AWS EC2, Linux servers, Nginx hosting and EBS backups.</p></div>
           </div>
-          <div class="card b-third reveal">
-            <span class="b-label">Client markets</span>
-            <div class="num" style="font-size:2.2rem;font-weight:800;letter-spacing:-.04em;margin-top:14px;">3 countries</div>
-            <div class="flags">
-              <span class="flag">🇧🇩 Bangladesh</span><span class="flag">🇦🇪 UAE</span><span class="flag">🇸🇦 Saudi Arabia</span>
-            </div>
-          </div>
-          <div class="card b-third learning-card reveal">
-            <span class="b-label" style="color:var(--a2);">Learning now</span>
-            <ul class="learn-list">
-              <li><i>AWS</i> EC2 instances</li>
-              <li><i>OS</i> Linux server admin</li>
-              <li><i>WEB</i> Nginx app hosting</li>
-              <li><i>OPS</i> EBS snapshots &amp; backups</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <span class="sec-tag">// 02 — experience</span>
-            <h2>Where I've worked.</h2>
-          </div>
-          <p>Four roles, from microfinance and HR systems to high-traffic e-commerce.</p>
-        </div>
-
-        <div class="timeline">
-          <article class="job reveal">
-            <div>
-              <div class="job-when">Nov 2025 — Present</div>
-              <div class="job-where">Dhaka, Bangladesh · On-site</div>
-              <span class="now-badge"><span class="live"></span>Current</span>
-            </div>
-            <div>
-              <h3>Software Engineer</h3>
-              <div class="co">Next IT Limited</div>
-              <ul>
-                <li>Develop and maintain full-stack enterprise modules: <b>Account, Inventory and Restaurant Reservation</b>.</li>
-                <li>Build with ASP.NET Core Web API, Angular 18 and MSSQL.</li>
-                <li>Implement features from SRS/SDD documents in an Agile team, with daily scrums.</li>
-                <li>Improve code quality through peer code reviews and QA support.</li>
-              </ul>
-              <div class="tags"><span class="pill">ASP.NET Core</span><span class="pill">Angular 18</span><span class="pill">MSSQL</span></div>
-            </div>
-          </article>
-
-          <article class="job reveal">
-            <div>
-              <div class="job-when">Jan 2024 — Mar 2025</div>
-              <div class="job-where">Dubai, UAE · Remote</div>
-            </div>
-            <div>
-              <h3>Senior Software Engineer</h3>
-              <div class="co">Royex Technologies</div>
-              <ul>
-                <li><b>Houfna</b> (e-commerce, UAE clients): enhanced a high-traffic platform by optimising stored procedures and building scalable Web APIs.</li>
-                <li><b>Dure Raiders admin panel:</b> built from scratch with ASP.NET Core MVC (code-first) to track club activities and events.</li>
-                <li><b>Royex Event Management System:</b> full-stack features delivered for NEOM, Saudi Arabia.</li>
-              </ul>
-              <div class="tags"><span class="pill">ASP.NET Core MVC</span><span class="pill">Web API</span><span class="pill">Stored procedures</span></div>
-            </div>
-          </article>
-
-          <article class="job reveal">
-            <div>
-              <div class="job-when">Jun 2022 — Dec 2023</div>
-              <div class="job-where">Dhaka, Bangladesh · Hybrid</div>
-            </div>
-            <div>
-              <h3>Software Engineer</h3>
-              <div class="co">Pixamatics Technology Ltd.</div>
-              <ul>
-                <li><b>HRM system:</b> authentication and authorisation with ASP.NET Identity and JWT.</li>
-                <li>RESTful APIs with ASP.NET Core for React and mobile clients.</li>
-                <li>Integrated ZKTeco biometric devices through a Windows app for real-time attendance sync.</li>
-              </ul>
-              <div class="tags"><span class="pill">ASP.NET Identity</span><span class="pill">JWT</span><span class="pill">React</span><span class="pill">ZKTeco SDK</span></div>
-            </div>
-          </article>
-
-          <article class="job reveal">
-            <div>
-              <div class="job-when">Nov 2020 — May 2022</div>
-              <div class="job-where">Dhaka, Bangladesh · On-site</div>
-            </div>
-            <div>
-              <h3>Junior Software Engineer</h3>
-              <div class="co">PC Link IT</div>
-              <ul>
-                <li><b>Microfinance system</b> for 70+ clients across 700+ branches: development and maintenance.</li>
-                <li>Internal project management tool for tracking team work progress.</li>
-                <li>Redesigned and developed <b>100+ Crystal Reports</b>, improving data and design accuracy.</li>
-              </ul>
-              <div class="tags"><span class="pill">ASP.NET MVC</span><span class="pill">Oracle</span><span class="pill">Crystal Reports</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work -->
-    <section id="work">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <span class="sec-tag">// 03 — selected work</span>
-            <h2>Systems I've built and maintained.</h2>
-          </div>
-          <p>Client projects across e-commerce, events, HR and finance.</p>
-        </div>
-
-        <div class="work-grid">
-          <article class="card work reveal">
-            <div class="work-top"><span class="work-idx">01</span><span class="work-cat">E-commerce · UAE</span></div>
-            <h3>Houfna</h3>
-            <p>High-traffic e-commerce platform for UAE clients. Optimised stored procedures and built scalable Web APIs.</p>
-            <div class="tags"><span class="pill">ASP.NET Core</span><span class="pill">Web API</span><span class="pill">MSSQL</span></div>
-          </article>
-          <article class="card work reveal">
-            <div class="work-top"><span class="work-idx">02</span><span class="work-cat">Events · NEOM, KSA</span></div>
-            <h3>Royex Event Management</h3>
-            <p>Full-stack event management system, developed and maintained, and delivered for NEOM, Saudi Arabia.</p>
-            <div class="tags"><span class="pill">ASP.NET Core</span><span class="pill">Full-stack</span></div>
-          </article>
-          <article class="card work reveal">
-            <div class="work-top"><span class="work-idx">03</span><span class="work-cat">Admin panel</span></div>
-            <h3>Dure Raiders</h3>
-            <p>Admin panel built from scratch with a code-first approach to monitor club activities and events.</p>
-            <div class="tags"><span class="pill">ASP.NET Core MVC</span><span class="pill">EF Core</span></div>
-          </article>
-          <article class="card work reveal">
-            <div class="work-top"><span class="work-idx">04</span><span class="work-cat">Enterprise · Current</span></div>
-            <h3>Enterprise ERP modules</h3>
-            <p>Account, Inventory and Restaurant Reservation modules built to SRS/SDD specifications.</p>
-            <div class="tags"><span class="pill">Angular 18</span><span class="pill">Web API</span><span class="pill">MSSQL</span></div>
-          </article>
-          <article class="card work reveal">
-            <div class="work-top"><span class="work-idx">05</span><span class="work-cat">HR · Attendance</span></div>
-            <h3>HRM System</h3>
-            <p>JWT-based authentication and authorisation, plus real-time biometric attendance sync through a Windows app.</p>
-            <div class="tags"><span class="pill">ASP.NET Identity</span><span class="pill">JWT</span><span class="pill">ZKTeco</span></div>
-          </article>
-          <article class="card work reveal">
-            <div class="work-top"><span class="work-idx">06</span><span class="work-cat">Microfinance</span></div>
-            <h3>Microfinance platform</h3>
-            <p>Financial management for 70+ clients across 700+ branches, with 100+ Crystal Reports.</p>
-            <div class="tags"><span class="pill">ASP.NET MVC</span><span class="pill">Oracle</span><span class="pill">Crystal Reports</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <span class="sec-tag">// 04 — skills</span>
-            <h2>Stack and tooling.</h2>
-          </div>
-          <p>What I use in production today, and what I'm learning next.</p>
-        </div>
-
-        <div class="skills">
-          <div class="card skill reveal">
-            <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></div>
-            <h3>Backend</h3>
-            <ul><li>ASP.NET Core Web API</li><li>ASP.NET MVC</li><li>Entity Framework Core</li><li>ASP.NET Identity &amp; JWT</li></ul>
-          </div>
-          <div class="card skill reveal">
-            <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="m9 14-2 2 2 2M15 14l2 2-2 2"/></svg></div>
-            <h3>Frontend</h3>
-            <ul><li>Angular 18</li><li>React</li><li>JavaScript</li><li>REST API integration</li></ul>
-          </div>
-          <div class="card skill reveal">
-            <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
-            <h3>Data &amp; tools</h3>
-            <ul><li>SQL Server &amp; stored procedures</li><li>Oracle</li><li>Crystal Reports</li><li>Git · Agile / Scrum</li></ul>
-          </div>
-          <div class="card skill learn reveal">
-            <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-1.3-8.8A6 6 0 1 0 6 16.5"/><path d="M6 19h11.5"/></svg></div>
-            <h3>Cloud <span>learning</span></h3>
-            <ul><li>AWS EC2</li><li>Linux</li><li>Nginx hosting</li><li>EBS snapshots &amp; backups</li></ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education">
-      <div class="container">
-        <div class="sec-head reveal">
-          <div>
-            <span class="sec-tag">// 05 — education &amp; certifications</span>
-            <h2>Education.</h2>
-          </div>
-          <p>A software engineering degree, built on strong school results.</p>
-        </div>
-
-        <div class="edu-grid">
-          <div class="card edu featured reveal">
-            <span class="lvl">Bachelor's degree</span>
-            <h3>BSc in Software Engineering</h3>
-            <div class="sch">American International University – Bangladesh</div>
-            <div class="row"><span class="yr">2017 — 2020</span><span class="gpa">3.54 <small>/ 4.00 CGPA</small></span></div>
-          </div>
-          <div class="card edu reveal">
-            <span class="lvl">Higher Secondary</span>
-            <h3>HSC, Science</h3>
-            <div class="sch">Notre Dame College, Mymensingh</div>
-            <div class="row"><span class="yr">2016</span><span class="gpa">4.83 <small>/ 5.00 GPA</small></span></div>
-          </div>
-          <div class="card edu reveal">
-            <span class="lvl">Secondary</span>
-            <h3>SSC</h3>
-            <div class="sch">Anjuman Adarsha Govt. High School, Netrokona</div>
-            <div class="row"><span class="yr">2014</span><span class="gpa">5.00 <small>/ 5.00 GPA</small></span></div>
-          </div>
-        </div>
-
-        <div class="certs">
-          <div class="card cert reveal">
-            <div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg></div>
-            <div><b>Problem Solving (Intermediate)</b><span>HackerRank certification</span></div>
-          </div>
-          <div class="card cert reveal">
-            <div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg></div>
-            <div><b>SQL (Advanced)</b><span>HackerRank certification</span></div>
-          </div>
-          <div class="card cert reveal">
-            <div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
-            <div><b>600+ problems solved</b><span>HackerRank · LeetCode · Codeforces</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <div class="container" id="contact">
-      <div class="cta reveal">
-        <span class="sec-tag">// 06 — contact</span>
-        <h2>Hiring a .NET engineer? <span class="grad-text" style="white-space:nowrap">Let's talk.</span></h2>
-        <p>I'm open to .NET, full-stack and cloud-focused roles, on-site in Dhaka, hybrid or remote.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="mailto:Askaribn223@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            Askaribn223@gmail.com
-          </a>
-          <a class="btn" href="Askar_Ibn_Azad_CV.pdf" download>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-            Download CV
-          </a>
-        </div>
-        <div class="contact-row">
-          <a href="https://www.linkedin.com/in/mraskaribnazad" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://github.com/AskarIbnAzad" target="_blank" rel="noopener">GitHub ↗</a>
-          <span>Dhaka, Bangladesh</span>
         </div>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="container">
+      <div class="sec-head">
+        <span class="kicker">Experience</span>
+        <h2>Professional experience</h2>
+        <p class="sec-intro">Five years across product companies and client projects in three countries.</p>
+      </div>
+
+      <div class="xp">
+        <div class="xp-meta">
+          <div class="when">Nov 2025 – Present</div>
+          <div class="where">Dhaka, Bangladesh</div>
+          <span class="now">Current role</span>
+        </div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="co">Next IT Limited</div>
+          <ul>
+            <li>Develop and maintain full-stack enterprise modules: <b>Account, Inventory and Restaurant Reservation</b>.</li>
+            <li>Build with ASP.NET Core Web API, Angular 18 and MSSQL.</li>
+            <li>Implement features from SRS/SDD documents in an Agile team, with daily scrums.</li>
+            <li>Improve code quality through peer code reviews and support QA.</li>
+          </ul>
+          <div class="chips"><span class="chip">ASP.NET Core</span><span class="chip">Angular 18</span><span class="chip">MSSQL</span></div>
+        </div>
+      </div>
+
+      <div class="xp">
+        <div class="xp-meta">
+          <div class="when">Jan 2024 – Mar 2025</div>
+          <div class="where">Dubai, UAE (Remote)</div>
+        </div>
+        <div>
+          <h3>Senior Software Engineer</h3>
+          <div class="co">Royex Technologies</div>
+          <ul>
+            <li><b>Houfna</b> (e-commerce, UAE clients): maintained and enhanced a high-traffic platform by optimising stored procedures and building scalable Web APIs.</li>
+            <li><b>Dure Raiders admin panel:</b> built from scratch with ASP.NET Core MVC (code-first) to track club activities and events.</li>
+            <li><b>Royex Event Management System:</b> developed and maintained full-stack features, delivered for NEOM, Saudi Arabia.</li>
+          </ul>
+          <div class="chips"><span class="chip">ASP.NET Core MVC</span><span class="chip">Web API</span><span class="chip">SQL Server</span></div>
+        </div>
+      </div>
+
+      <div class="xp">
+        <div class="xp-meta">
+          <div class="when">Jun 2022 – Dec 2023</div>
+          <div class="where">Dhaka, Bangladesh</div>
+        </div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="co">Pixamatics Technology Ltd.</div>
+          <ul>
+            <li><b>HRM system:</b> implemented authentication and authorisation with ASP.NET Identity and JWT.</li>
+            <li>Built RESTful APIs with ASP.NET Core for React and mobile clients.</li>
+            <li>Integrated ZKTeco biometric devices through a Windows app for real-time attendance sync.</li>
+          </ul>
+          <div class="chips"><span class="chip">ASP.NET Identity</span><span class="chip">JWT</span><span class="chip">React</span><span class="chip">ZKTeco SDK</span></div>
+        </div>
+      </div>
+
+      <div class="xp">
+        <div class="xp-meta">
+          <div class="when">Nov 2020 – May 2022</div>
+          <div class="where">Dhaka, Bangladesh</div>
+        </div>
+        <div>
+          <h3>Junior Software Engineer</h3>
+          <div class="co">PC Link IT</div>
+          <ul>
+            <li><b>Microfinance system</b> for 70+ clients across 700+ branches: development and maintenance.</li>
+            <li>Built an internal project management tool for tracking team work progress.</li>
+            <li>Redesigned and developed <b>100+ Crystal Reports</b>, improving data and design accuracy.</li>
+          </ul>
+          <div class="chips"><span class="chip">ASP.NET MVC</span><span class="chip">Oracle</span><span class="chip">Crystal Reports</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="alt">
+    <div class="container">
+      <div class="sec-head">
+        <span class="kicker">Projects</span>
+        <h2>Selected projects</h2>
+        <p class="sec-intro">Client systems I have built, maintained or improved.</p>
+      </div>
+      <div class="projects">
+        <article class="project">
+          <span class="cat">E-commerce · UAE</span>
+          <h3>Houfna</h3>
+          <p>High-traffic e-commerce platform for UAE clients. Optimised stored procedures and built scalable Web APIs.</p>
+          <div class="chips"><span class="chip">ASP.NET Core</span><span class="chip">Web API</span><span class="chip">MSSQL</span></div>
+        </article>
+        <article class="project">
+          <span class="cat">Events · Saudi Arabia</span>
+          <h3>Royex Event Management</h3>
+          <p>Full-stack event management system, developed and maintained, and delivered for NEOM.</p>
+          <div class="chips"><span class="chip">ASP.NET Core</span><span class="chip">Full-stack</span></div>
+        </article>
+        <article class="project">
+          <span class="cat">Admin panel</span>
+          <h3>Dure Raiders</h3>
+          <p>Admin panel built from scratch with a code-first approach to monitor club activities and events.</p>
+          <div class="chips"><span class="chip">ASP.NET Core MVC</span><span class="chip">EF Core</span></div>
+        </article>
+        <article class="project">
+          <span class="cat">Enterprise · Current</span>
+          <h3>Enterprise ERP modules</h3>
+          <p>Account, Inventory and Restaurant Reservation modules built to SRS/SDD specifications.</p>
+          <div class="chips"><span class="chip">Angular 18</span><span class="chip">Web API</span><span class="chip">MSSQL</span></div>
+        </article>
+        <article class="project">
+          <span class="cat">HR · Attendance</span>
+          <h3>HRM System</h3>
+          <p>JWT-based authentication and authorisation, with real-time biometric attendance sync.</p>
+          <div class="chips"><span class="chip">ASP.NET Identity</span><span class="chip">JWT</span><span class="chip">ZKTeco</span></div>
+        </article>
+        <article class="project">
+          <span class="cat">Microfinance</span>
+          <h3>Microfinance Platform</h3>
+          <p>Financial management for 70+ clients across 700+ branches, with 100+ Crystal Reports.</p>
+          <div class="chips"><span class="chip">ASP.NET MVC</span><span class="chip">Oracle</span><span class="chip">Crystal Reports</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <div class="sec-head">
+        <span class="kicker">Skills</span>
+        <h2>Technical skills</h2>
+        <p class="sec-intro">Technologies I use in production, and the cloud skills I'm building now.</p>
+      </div>
+      <div class="skills">
+        <div class="skill">
+          <h3>Backend</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>C# · ASP.NET Core</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Web API · MVC</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Entity Framework Core</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>ASP.NET Identity · JWT</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>Frontend</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Angular 18</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>React</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>JavaScript</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>REST API integration</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>Data &amp; Tools</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SQL Server · Oracle</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Stored procedures</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Crystal Reports</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Git · Agile / Scrum</li>
+          </ul>
+        </div>
+        <div class="skill learning">
+          <h3>Cloud <small>Learning</small></h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg>AWS EC2</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg>Linux</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg>Nginx hosting</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg>EBS snapshots &amp; backups</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="alt">
+    <div class="container">
+      <div class="sec-head">
+        <span class="kicker">Education</span>
+        <h2>Education &amp; certifications</h2>
+      </div>
+      <div class="edu-wrap">
+        <div class="edu-list">
+          <div class="edu">
+            <div>
+              <h3>BSc in Software Engineering</h3>
+              <div class="sch">American International University – Bangladesh</div>
+              <div class="yr">2017 – 2020</div>
+            </div>
+            <div class="grade"><b>3.54</b><span>CGPA out of 4.00</span></div>
+          </div>
+          <div class="edu">
+            <div>
+              <h3>Higher Secondary Certificate (HSC)</h3>
+              <div class="sch">Notre Dame College, Mymensingh</div>
+              <div class="yr">2016</div>
+            </div>
+            <div class="grade"><b>4.83</b><span>GPA out of 5.00</span></div>
+          </div>
+          <div class="edu">
+            <div>
+              <h3>Secondary School Certificate (SSC)</h3>
+              <div class="sch">Anjuman Adarsha Govt. High School, Netrokona</div>
+              <div class="yr">2014</div>
+            </div>
+            <div class="grade"><b>5.00</b><span>GPA out of 5.00</span></div>
+          </div>
+        </div>
+        <div class="cert-box">
+          <h3>Certifications &amp; achievements</h3>
+          <div class="cert">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg></div>
+            <div><b>Problem Solving (Intermediate)</b><span>HackerRank</span></div>
+          </div>
+          <div class="cert">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg></div>
+            <div><b>SQL (Advanced)</b><span>HackerRank</span></div>
+          </div>
+          <div class="cert">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
+            <div><b>600+ algorithm problems solved</b><span>HackerRank, LeetCode and Codeforces</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <span class="kicker">Contact</span>
+          <h2>Let's work together</h2>
+          <p>I'm open to .NET, full-stack and cloud-focused roles: on-site in Dhaka, hybrid or remote. The best way to reach me is by email.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:Askaribn223@gmail.com">Send an email</a>
+            <a class="btn ghost" href="Askar_Ibn_Azad_CV.pdf" download>Download CV</a>
+          </div>
+        </div>
+        <div class="contact-list">
+          <a class="contact-item" href="mailto:Askaribn223@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <div><small>Email</small><b>Askaribn223@gmail.com</b></div>
+          </a>
+          <a class="contact-item" href="https://www.linkedin.com/in/mraskaribnazad" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            <div><small>LinkedIn</small><b>linkedin.com/in/mraskaribnazad</b></div>
+          </a>
+          <a class="contact-item" href="https://github.com/AskarIbnAzad" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+            <div><small>GitHub</small><b>github.com/AskarIbnAzad</b></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
-      <span>© <span id="yr">2026</span> Askar Ibn Azad</span>
-      <span class="mono">Designed &amp; built with HTML + CSS</span>
+      <span>© 2026 Askar Ibn Azad</span>
+      <span>Dhaka, Bangladesh</span>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    const items = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      items.forEach((el) => io.observe(el));
-    } else {
-      items.forEach((el) => el.classList.add('in'));
-    }
-    const links = document.querySelectorAll('.nav-links a');
-    const sections = [...links].map((a) => document.querySelector(a.getAttribute('href')));
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach((s) => s && spy.observe(s));
-  </script>
 </body>
 </html>
