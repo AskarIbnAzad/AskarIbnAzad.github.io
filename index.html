@@ -172,6 +172,28 @@
     .contact-item small { display: block; font-size: 0.78rem; color: #aac0ff; }
     .contact-item b { font-weight: 600; font-size: 0.98rem; }
 
+    /* Contact form */
+    .form-wrap { margin-top: 56px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.15); }
+    .form-wrap h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+    .form-wrap > p { margin: 0 0 26px; }
+    .cform { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 760px; }
+    .cform .full { grid-column: 1 / -1; }
+    .cform label { display: block; font-size: 0.82rem; font-weight: 600; color: #aac0ff; margin-bottom: 6px; }
+    .cform input, .cform textarea {
+      width: 100%; font: inherit; font-size: 0.96rem; color: #fff;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; padding: 12px 14px; transition: border-color .15s, background .15s;
+    }
+    .cform input::placeholder, .cform textarea::placeholder { color: #8ea3d9; }
+    .cform input:focus, .cform textarea:focus { outline: none; border-color: #aac0ff; background: rgba(255,255,255,0.11); }
+    .cform textarea { min-height: 130px; resize: vertical; }
+    .cform .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+    .cform button { cursor: pointer; font-family: inherit; }
+    .cform button:disabled { opacity: .6; cursor: not-allowed; }
+    .form-status { margin-left: 14px; font-size: 0.92rem; color: #cdd8f6; }
+    .form-status.ok { color: #86efac; }
+    .form-status.err { color: #fca5a5; }
+
     footer { background: var(--navy-dark); color: #9fb2e6; font-size: 0.88rem; padding: 22px 0; }
     footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
@@ -198,6 +220,7 @@
       .edu { flex-direction: column; align-items: flex-start; }
       .edu .grade { text-align: left; }
       .contact { padding: 64px 0; }
+      .cform { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -550,7 +573,7 @@
         <div>
           <span class="kicker">Contact</span>
           <h2>Let's work together</h2>
-          <p>I'm open to .NET, full-stack and cloud-focused roles: on-site in Dhaka, hybrid or remote. The best way to reach me is by email.</p>
+          <p>I'm open to .NET, full-stack and cloud-focused roles: on-site in Dhaka, hybrid or remote. The best way to reach me is by email or the form below.</p>
           <div class="actions">
             <a class="btn primary" href="mailto:Askaribn223@gmail.com">Send an email</a>
             <a class="btn ghost" href="Askar_Ibn_Azad_CV.pdf" download>Download CV</a>
@@ -571,6 +594,34 @@
           </a>
         </div>
       </div>
+
+      <!-- Contact form (sends a push notification to your phone via ntfy) -->
+      <div class="form-wrap">
+        <h3>Send me a message</h3>
+        <p>Fill in the form and I'll get a notification straight away.</p>
+        <form id="contactForm" class="cform" novalidate>
+          <div>
+            <label for="cf-name">Name</label>
+            <input id="cf-name" type="text" maxlength="80" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="cf-email">Email</label>
+            <input id="cf-email" type="email" maxlength="120" placeholder="you@company.com" required />
+          </div>
+          <div class="full">
+            <label for="cf-msg">Message</label>
+            <textarea id="cf-msg" maxlength="1500" placeholder="Tell me about the role or project..." required></textarea>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="cf-web">Leave this empty</label>
+            <input id="cf-web" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="full">
+            <button type="submit" class="btn primary" id="cf-btn">Send message</button>
+            <span id="cf-status" class="form-status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -580,6 +631,74 @@
       <span>Dhaka, Bangladesh</span>
     </div>
   </footer>
+
+  <script>
+  (function () {
+    // Must match EXACTLY the topic you subscribed to in the ntfy app (case-sensitive).
+    var NTFY_TOPIC = "Askar-Protfolio-ContactMe";
+
+    var form = document.getElementById("contactForm");
+    var btn = document.getElementById("cf-btn");
+    var status = document.getElementById("cf-status");
+
+    function setStatus(msg, cls) {
+      status.textContent = msg;
+      status.className = "form-status " + (cls || "");
+    }
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      // Honeypot: bots fill this hidden field, humans don't
+      if (document.getElementById("cf-web").value) return;
+
+      var name = document.getElementById("cf-name").value.trim();
+      var email = document.getElementById("cf-email").value.trim();
+      var msg = document.getElementById("cf-msg").value.trim();
+
+      if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setStatus("Please fill in all fields with a valid email.", "err");
+        return;
+      }
+
+      // Simple 60-second cooldown per browser
+      try {
+        var last = Number(localStorage.getItem("cf_last") || 0);
+        if (Date.now() - last < 60000) {
+          setStatus("Please wait a minute before sending again.", "err");
+          return;
+        }
+      } catch (_) {}
+
+      btn.disabled = true;
+      setStatus("Sending...");
+
+      try {
+        var res = await fetch("https://ntfy.sh/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            topic: NTFY_TOPIC,
+            title: "Portfolio message from " + name,
+            message: "Email: " + email + "\n\n" + msg,
+            priority: 4,
+            tags: ["envelope"],
+            click: "mailto:" + email
+          })
+        });
+        if (!res.ok) throw new Error("bad response");
+
+        try { localStorage.setItem("cf_last", String(Date.now())); } catch (_) {}
+        form.reset();
+        setStatus("Thanks! Your message was sent.", "ok");
+      } catch (err) {
+        setStatus("Couldn't send. Please email me directly instead.", "err");
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  })();
+  </script>
 
 </body>
 </html>
